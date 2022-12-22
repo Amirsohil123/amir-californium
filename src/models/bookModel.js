@@ -5,11 +5,10 @@ const bookSchema = new mongoose.Schema( {
     name:String,
     author: {
         type: ObjectId,
-        required: true,
-        ref: "LibraryAuthor"
+        ref : "LibraryAuthor"
     },
     price:Number,
-    rating:Number,
+    isHardcover : Boolean,
     publisher:{
         type:ObjectId,
         ref: "LibraryPublisher"

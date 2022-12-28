@@ -6,16 +6,16 @@ const authenticate = async function(req, res, next) {
         if(!tok){
             return res.send("token is missing")
         }
-        // let verifysecret = jwt.verify(tok, "This is secret")
-        // if(!verifysecret){
-        //     return res.send("invalid token")
-        // }
-        // let userid = req.params.userId
-        // let tokenid = verifysecret.userId
+        let verifysecret = jwt.verify(tok, "This is secret")
+        if(!verifysecret){
+            return res.send("invalid token")
+        }
+        let userid = req.params.userId
+        let tokenid = verifysecret.userId
         
-        // if(userid!=tokenid){
-        //    return res.send("auhtorization error")
-        // }
+        if(userid!=tokenid){
+           return res.send("auhtorization error")
+        }
         next()
 }
 
